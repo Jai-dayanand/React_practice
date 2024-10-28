@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes or No Selection</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('Untitled design.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white; /* Adjust text color for readability */
+        }
+
+        .question-container {
+            background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .question {
+            user-select: none; /* Prevents selection */
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn.no {
+            position: relative; /* Keeps the No button initially aligned */
+        }
+    </style>
+</head>
+<body>
+    <div class="question-container">
+        <div class="question">Wanna consider dating me??!!</div>
+    </div>
+    <div class="options">
+        <button class="btn" onclick="confirmChoice('yes')">Yes</button>
+        <button class="btn no" onclick="moveNo()">No</button>
+    </div>
+
+    <script>
+        function confirmChoice(choice) {
+            if (choice === 'yes') {
+                window.location.href = "lesgoo.html"; // Redirects to success page
+            }
+        }
+
+        function moveNo() {
+            const noButton = document.querySelector('.btn.no');
+            noButton.style.position = 'absolute'; // Start moving No button when clicked
+            const randomX = Math.floor(Math.random() * (window.innerWidth - noButton.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - noButton.offsetHeight));
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
